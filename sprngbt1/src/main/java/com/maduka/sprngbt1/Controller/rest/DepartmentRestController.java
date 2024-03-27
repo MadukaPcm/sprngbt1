@@ -1,9 +1,8 @@
-package com.maduka.sprngbt1.Controller;
+package com.maduka.sprngbt1.Controller.rest;
 
 import com.maduka.sprngbt1.Error.DepartmentNotFoundException;
 import com.maduka.sprngbt1.Model.Department;
 import com.maduka.sprngbt1.Service.DepartmentService;
-import com.maduka.sprngbt1.ServiceImplementation.DepartmentServiceImpl;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class DepartmentController {
+public class DepartmentRestController {
     private final DepartmentService departmentService;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentRestController.class);
 
     @Autowired
-    public DepartmentController(DepartmentService departmentService) {
+    public DepartmentRestController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 

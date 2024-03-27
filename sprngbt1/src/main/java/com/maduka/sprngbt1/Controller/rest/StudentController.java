@@ -1,4 +1,4 @@
-package com.maduka.sprngbt1.Controller;
+package com.maduka.sprngbt1.Controller.rest;
 
 import com.maduka.sprngbt1.Model.Student;
 import com.maduka.sprngbt1.Service.StudentService;

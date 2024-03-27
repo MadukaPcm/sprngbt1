@@ -6,6 +6,7 @@ import com.maduka.sprngbt1.Model.Department;
 import com.maduka.sprngbt1.Repository.DepartmentRepository;
 import com.maduka.sprngbt1.Service.DepartmentService;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class DepartmentServiceImpl implements DepartmentService {
 
     public final DepartmentRepository departmentRepository;

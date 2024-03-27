@@ -1,4 +1,4 @@
-package com.maduka.sprngbt1.Controller;
+package com.maduka.sprngbt1.Controller.rest;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

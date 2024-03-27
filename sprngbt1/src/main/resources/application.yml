@@ -1,7 +1,11 @@
 server:
   error:
     include-message: always
-  port: 8082
+  port: 8080
+graphql:
+  spqr:
+    gui:
+      enabled: true
 spring:
   datasource:
     password: '@maduka1'
@@ -15,9 +19,18 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+#  graphql:
+#    schema:
+#      printer:
+#        enabled: true
+#    graphiql:
+#      enabled: true
+
 welcome:
   message: Welcome to daily maduka coding place !!
-
 
 management:
   endpoints:
