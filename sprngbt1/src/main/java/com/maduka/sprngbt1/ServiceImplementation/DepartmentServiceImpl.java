@@ -5,6 +5,10 @@ import com.maduka.sprngbt1.Model.Department;
 //import com.maduka.sprngbt1.Repository.DepartmentRepository;
 import com.maduka.sprngbt1.Repository.DepartmentRepository;
 import com.maduka.sprngbt1.Service.DepartmentService;
+import com.maduka.sprngbt1.payload.dtos.DepartmentDto;
+import com.maduka.sprngbt1.payload.response.DepartmentResponse;
+import com.maduka.sprngbt1.payload.response.Response;
+import com.maduka.sprngbt1.utils.ResponseCode;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +29,39 @@ public class DepartmentServiceImpl implements DepartmentService {
         this.departmentRepository = departmentRepository;
     }
     @Override
-    public Department saveDepartment(Department department) {
-        return departmentRepository.save(department);
+    public Response<Department> createUpdateDepartment(DepartmentDto department) {
+        try{
+            Department department1 = new Department();
+            if(department != null){
+                if(department.getDepartmentUuid() != null && !department.getDepartmentUuid().isBlank()){
+                    Optional<Department> departmentOptional = departmentRepository.findFirstByUuid(department.getDepartmentUuid());
+                    if (departmentOptional.isPresent()){
+                        department1 = departmentOptional.get();
+                    }else {
+                        return new Response<>(true,ResponseCode.FAIL,ResponseCode.MSG_INVALID_UNIQUE_ID);
+                    }
+                }
+
+                if(department.getDepartmentName() == null || department.getDepartmentName().isBlank())
+                    return new Response<>(true, ResponseCode.NULL_ARGUMENT,"Department name is required");
+                if (department.getDepartmentAddress() == null || department.getDepartmentAddress().isBlank())
+                    return new Response<>(true,ResponseCode.NULL_ARGUMENT,"Department address is required");
+                if (department.getDepartmentCode() == null || department.getDepartmentCode().isBlank())
+                    return new Response<>(true,ResponseCode.NULL_ARGUMENT,"Department code is required");
+
+
+                department1.setDepartmentName(department.getDepartmentName());
+                department1.setDepartmentAddress(department.getDepartmentAddress());
+                department1.setDepartmentCode(department.getDepartmentCode());
+
+                Department department2 = departmentRepository.save(department1);
+                return new Response<>(false, ResponseCode.SUCCESS,ResponseCode.MSG_OPERATION_SUCCESSFUL,department2,null);
+            }
+
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+        return new Response<>(true,ResponseCode.FAIL,ResponseCode.MSG_OPERATION_UNSUCCESSFUL);
     }
 
     @Override
@@ -55,25 +90,6 @@ public class DepartmentServiceImpl implements DepartmentService {
             throw new EntityNotFoundException("Department with Id "+ departmentId+ " Not found");
         }
 
-    }
-
-    @Override
-    public Department updateDepartment(Long departmentId, Department department) {
-        Department depdb = departmentRepository.findById(departmentId).get();
-
-        if(Objects.nonNull(department.getDepartmentName()) && !"".equalsIgnoreCase(department.getDepartmentName())){
-            depdb.setDepartmentName(department.getDepartmentName());
-        }
-
-        if(Objects.nonNull(department.getDepartmentAddress()) && !"".equalsIgnoreCase(department.getDepartmentAddress())){
-            depdb.setDepartmentAddress(department.getDepartmentAddress());
-        }
-
-        if(Objects.nonNull(department.getDepartmentCode()) && !"".equalsIgnoreCase(department.getDepartmentCode())){
-            depdb.setDepartmentCode(department.getDepartmentCode());
-        }
-
-        return departmentRepository.save(depdb);
     }
 
     @Override

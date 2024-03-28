@@ -1,16 +1,14 @@
-package com.maduka.sprngbt1.payload.dtos;
+package com.maduka.sprngbt1.payload.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-public class DepartmentDto {
-    private String departmentUuid;
+@NoArgsConstructor
+public class DepartmentResponse {
+    private Long departmentId;
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;

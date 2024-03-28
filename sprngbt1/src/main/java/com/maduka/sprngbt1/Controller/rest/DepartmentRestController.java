@@ -3,6 +3,9 @@ package com.maduka.sprngbt1.Controller.rest;
 import com.maduka.sprngbt1.Error.DepartmentNotFoundException;
 import com.maduka.sprngbt1.Model.Department;
 import com.maduka.sprngbt1.Service.DepartmentService;
+import com.maduka.sprngbt1.payload.dtos.DepartmentDto;
+import com.maduka.sprngbt1.payload.response.DepartmentResponse;
+import com.maduka.sprngbt1.payload.response.Response;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +26,9 @@ public class DepartmentRestController {
     }
 
     @PostMapping("/departments")
-    public Department saveDepartment(@Valid @RequestBody Department department){
+    public Response<Department> createUpdateDepartment(@Valid @RequestBody DepartmentDto department){
         LOGGER.info("Inside the department !!");
-        return departmentService.saveDepartment(department);
+        return departmentService.createUpdateDepartment(department);
     }
 
     @GetMapping("/departments")
@@ -41,11 +44,6 @@ public class DepartmentRestController {
     @DeleteMapping("/departments/{id}")
     public String deleteDepartmentById(@PathVariable("id") Long departmentId){
         return departmentService.deleteDepartmentById(departmentId);
-    }
-
-    @PutMapping("/departments/{id}")
-    public Department updateDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department){
-        return departmentService.updateDepartment(departmentId, department);
     }
 
     @GetMapping("departments/name/{name}")
