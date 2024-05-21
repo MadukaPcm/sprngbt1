@@ -49,7 +49,6 @@ public class DepartmentServiceImpl implements DepartmentService {
                 if (department.getDepartmentCode() == null || department.getDepartmentCode().isBlank())
                     return new Response<>(true,ResponseCode.NULL_ARGUMENT,"Department code is required");
 
-
                 department1.setDepartmentName(department.getDepartmentName());
                 department1.setDepartmentAddress(department.getDepartmentAddress());
                 department1.setDepartmentCode(department.getDepartmentCode());
@@ -98,3 +97,23 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
 }
+
+
+
+//
+//@Service
+//public class MeetingServiceImpl implements MeetingService {
+//
+//    private final MeetingRepository meetingRepository;
+//
+//    @Autowired
+//    public MeetingServiceImpl(MeetingRepository meetingRepository) {
+//        this.meetingRepository = meetingRepository;
+//    }
+//
+//    @Override
+//    public Optional<Meeting> findMeetingByCriteria(String title, String location, UserAccount userAccount, LocalDateTime startDate) {
+//        return meetingRepository.findByTitleIgnoreCaseAndLocationIgnoreCaseAndUserAccountAndStartDate(title, location, userAccount, startDate);
+//    }
+//}
+

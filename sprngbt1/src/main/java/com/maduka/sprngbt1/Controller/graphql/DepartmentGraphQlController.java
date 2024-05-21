@@ -52,3 +52,27 @@ public class DepartmentGraphQlController {
         return service.deleteDepartmentById(departmentId);
     }
 }
+
+
+
+//
+//@Controller
+//public class MyController {
+//
+//    @Autowired
+//    private MeetingService meetingService;
+//
+//    @GetMapping("/meetings")
+//    public ResponseEntity<Optional<Meeting>> getMeetingByCriteria(@RequestParam String title,
+//                                                                  @RequestParam String location,
+//                                                                  @RequestParam UserAccount userAccount,
+//                                                                  @RequestParam LocalDateTime startDate) {
+//        Optional<Meeting> meeting = meetingService.findMeetingByCriteria(title, location, userAccount, startDate);
+//
+//        if (meeting.isPresent()) {
+//            return ResponseEntity.ok(meeting);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+//}

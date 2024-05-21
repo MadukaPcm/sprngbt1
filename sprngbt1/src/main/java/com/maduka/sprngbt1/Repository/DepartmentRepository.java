@@ -16,3 +16,12 @@ public interface DepartmentRepository extends JpaRepository<Department, Long> {
 //    @Query(value="SELECT * FROM -----", nativeQuery = true)  Use this annotation for native queries.
     public Department findByDepartmentNameIgnoreCase(String departmentName);
 }
+
+
+
+//
+//public interface MeetingRepository extends JpaRepository<Meeting, Long> {
+//
+//    Optional<Meeting> findByTitleIgnoreCaseAndLocationIgnoreCaseAndUserAccountAndStartDate(
+//            String title, String location, UserAccount userAccount, LocalDateTime startDate);
+//}
