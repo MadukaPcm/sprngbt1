@@ -3,6 +3,8 @@ package com.maduka.sprngbt1.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -17,6 +19,9 @@ public class Item1 {
     @GeneratedValue
     private int id;
     private String name;
+
+    @OneToMany(mappedBy = "item1")   // Telling the table that this relationship is handled by customer1 table on item1 field.
+    private List<Customer1> customer1;
 
 }
 
