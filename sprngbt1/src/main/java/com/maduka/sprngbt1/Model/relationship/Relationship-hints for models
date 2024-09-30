@@ -1,0 +1,40 @@
+
+A Car has one to one relationship to Driver => Car 1->to->1 Driver.
+
+Override Oauth2 default/django authentication.
+
+============ USEFULLY LINKS =================
+https://codingnomads.com/spring-data-jpa-one-to-many-relationship
+https://www.youtube.com/watch?v=CvDS6DltIno
+https://medium.com/@bdamianchamel/relationships-in-spring-data-jpa-7c5ceaf05f29
+https://www.baeldung.com/spring-data-rest-relationships
+https://medium.com/@zubeyrdamar/java-spring-boot-one-to-one-rel-7eae27c8b1d6
+-----------------------------------------------------------------------
+
+Summary: One-to-Many Relationship
+Bidirectional relationships use both annotations (one on each side).
+When establishing bidirectional relationships, it is important to utilize the mappedBy attribute of @OneToMany.
+The @ManyToOne side is generally the "owning" or "parent" side of the relationship.
+When persisting changes, it is important to initiate actions from the owning side of the relationship.
+
+NB:
+2. Owning Side of the Relationship
+The owning side of the relationship is typically the side that controls the relationship. In a Many-to-One relationship:
+The Comment (the "child" side) has a foreign key pointing to the Post (the "owning" or "parent" side).
+In most cases, the "owning" side is the Many-to-One side because it's the one that holds the foreign key.
+
+MAPPED-BY:
+In frameworks like JPA (Java), when defining a bidirectional relationship, the mappedBy attribute helps define which side owns the relationship
+
+
+Use Cases
+When to use List<T>:
+
+You need to maintain the order of elements.
+You expect to have duplicate values in your collection.
+You want to access elements by their index.
+When to use Set<T>:
+
+You want to ensure that all elements are unique and duplicates are not allowed.
+Order of elements is not important (or you need a specific type of ordering like natural ordering with TreeSet).
+You need faster lookups for presence or absence of elements.
