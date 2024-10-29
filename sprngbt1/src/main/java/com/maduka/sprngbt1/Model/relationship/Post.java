@@ -25,8 +25,8 @@ public class Post {
 
     // this annotation references the configuration
     // on the post field in the Comment class
-    @OneToMany(mappedBy = "post")  // mappedBy attribute on the non-owning side to indicate that the relationship is controlled by the other entity.
-    private List<Comment> comments;
+//    @OneToMany(mappedBy = "post")  // mappedBy attribute on the non-owning side to indicate that the relationship is controlled by the other entity.
+//    private List<Comment> comments;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Location> locations;

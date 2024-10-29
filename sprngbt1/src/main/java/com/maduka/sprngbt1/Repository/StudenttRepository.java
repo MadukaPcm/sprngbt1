@@ -27,8 +27,8 @@ public interface StudenttRepository extends JpaRepository<Studentt, Long> {
     @Query("select s from Studentt s where s.emailId = ?1")
     Studentt getStudenttByEmailAddress(String emailId);
 
-    @Query("select s.firstName from Studentt s where s.emailId = ?1")
-    String getStudenttByFirstNameByEmailAddress(String emailId);
+//    @Query("select s.firstName from Studentt s where s.emailId = ?1")
+//    String getStudenttByFirstNameByEmailAddress(String emailId);
 
     // NATIVE QUESRY always use ..... table attribute defined in database.
     @Query(
